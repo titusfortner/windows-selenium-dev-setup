@@ -61,6 +61,7 @@ setx path "%path%C:\drivers"
 
 mkdir C:\git
 cd C:\git
-git clone --depth 1 https://github.com/SeleniumHQ/selenium.git
+git clone https://github.com/SeleniumHQ/selenium.git
+git checkout 5556f0ab4586516e6d8f98e8b07a7a7e988d3fa5
 
 pause > nul
