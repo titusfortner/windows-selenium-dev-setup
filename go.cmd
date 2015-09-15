@@ -28,9 +28,6 @@ choco install -y firefox
 choco install -y phantomjs
 choco install -y google-chrome-x64
 
-call uru admin add --recurse C:\rubies
-uru 223
-
 REM .NET Framework 4.0 is a prerequisite for chocolatey,
 REM so is unneeded as a separate install.
 REM choco install -y dotnet4.0
@@ -62,6 +59,11 @@ setx path "%path%C:\drivers"
 mkdir C:\git
 cd C:\git
 git clone https://github.com/SeleniumHQ/selenium.git
-git checkout 5556f0ab4586516e6d8f98e8b07a7a7e988d3fa5
+cd selenium
+git checkout 1431a264d6101f91ff1c2ad62b1e6d5e30764b46
+
+echo You have to run the following manually:
+echo "C:\tools\uru admin add --recurse C:\rubies"
+echo "C:\tools\uru 223
 
 pause > nul
