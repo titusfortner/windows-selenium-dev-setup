@@ -6,17 +6,12 @@ choco install -y 7zip.commandline
 
 choco install -y curl
 
-pause > nul
-
 setx path “%path%C:\tools”
 cd C:\tools
 curl -L -O --insecure "https://bitbucket.org/jonforums/uru/downloads/uru-0.8.0-windows-x86.7z"
 
 7za e uru-0.8.0-windows-x86.7z
-copy uru_rt.exe C:\tools
 C:\tools\uru_rt.exe admin install
-
-pause > nul
 
 curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.3-x64.exe"
 rubyinstaller-2.2.3-x64.exe /silent
@@ -27,18 +22,16 @@ rubyinstaller-2.1.7-x64.exe /silent
 curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p647-x64.exe"
 rubyinstaller-2.0.0-p647-x64.exe /silent
 
-uru admin add C:\Ruby22-x64\bin
-uru admin add C:\Ruby21-x64\bin
-uru admin add C:\Ruby200-x64\bin
-uru 223
-
-pause > nul
-
 choco install -y jdk7
 choco install -y dotnet3.5
 choco install -y firefox
 choco install -y phantomjs
 choco install -y google-chrome-x64
+
+uru admin add C:\Ruby22-x64\bin
+uru admin add C:\Ruby21-x64\bin
+uru admin add C:\Ruby200-x64\bin
+uru 223
 
 REM .NET Framework 4.0 is a prerequisite for chocolatey,
 REM so is unneeded as a separate install.
