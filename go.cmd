@@ -5,12 +5,12 @@ choco install -y python2
 choco install -y 7zip.commandline
 
 choco install -y curl
-curl -L -O —-insecure “https://bitbucket.org/jonforums/uru/downloads/uru-0.8.0-windows-x86.7z”
 
 pause > nul
 
-mkdir C:\tools
 setx path “%path%C:\tools”
+cd C:\tools
+curl -L -O --insecure "https://bitbucket.org/jonforums/uru/downloads/uru-0.8.0-windows-x86.7z"
 
 7za e uru-0.8.0-windows-x86.7z
 copy uru_rt.exe C:\tools
@@ -20,15 +20,17 @@ pause > nul
 
 curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.3-x64.exe"
 rubyinstaller-2.2.3-x64.exe /silent
-C:\tools\uru admin add C:\Ruby22-x64\bin
 
 curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.1.7-x64.exe"
 rubyinstaller-2.1.7-x64.exe /silent
-C:\tools\uru admin add C:\Ruby21-x64\bin
 
 curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p647-x64.exe"
 rubyinstaller-2.0.0-p647-x64.exe /silent
-C:\tools\uru admin add C:\Ruby200-x64\bin
+
+uru admin add C:\Ruby22-x64\bin
+uru admin add C:\Ruby21-x64\bin
+uru admin add C:\Ruby200-x64\bin
+uru 223
 
 pause > nul
 
@@ -55,20 +57,22 @@ rmdir “C:\drivers\Microsoft Web Driver”
 pause > nul
 
 curl -s http://chromedriver.storage.googleapis.com/LATEST_RELEASE > temp.txt
-set /p CHROMDERIVER_VERSION=<temp.txt
+set /p CHROMEDRIVER_VERSION=<temp.txt
 curl -L -O "http://chromedriver.storage.googleapis.com/%CHROMEDRIVER_VERSION%/chromedriver_win32.zip"
-jar xf chromedriver_win32.zip
+7za e chromedriver_win32.zip
 move chromedriver.exe C:\drivers
 
 pause > nul
 
 curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/0.3.0/wires-0.3.0-windows.zip"
-jar xf wires-0.3.0-windows.zip
+7za e wires-0.3.0-windows.zip
 move wires.exe C:\drivers
 
 pause > nul
 
 curl -L -O "http://selenium-release.storage.googleapis.com/2.47/IEDriverServer_x64_2.47.0.zip"
+7za e IEDriverServer_x64_2.47.0.zip
+move IEDriverServer.exe C:\drivers
 
 setx path “%path%C:\drivers”
 
