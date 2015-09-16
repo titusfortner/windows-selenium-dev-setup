@@ -6,7 +6,7 @@ choco install -y 7zip.commandline
 
 choco install -y curl
 
-setx path “%path%C:\tools”
+setx path “%path%;C:\tools”
 cd C:\tools
 curl -L -O --insecure "https://bitbucket.org/jonforums/uru/downloads/uru-0.8.0-windows-x86.7z"
 
@@ -54,7 +54,7 @@ curl -L -O "http://selenium-release.storage.googleapis.com/2.47/IEDriverServer_x
 7za e IEDriverServer_x64_2.47.0.zip
 move IEDriverServer.exe C:\drivers
 
-setx path "%path%C:\drivers"
+setx path "%path%;C:\drivers"
 
 mkdir C:\git
 cd C:\git
