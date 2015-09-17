@@ -27,7 +27,6 @@ choco install -y dotnet3.5
 choco install -y firefox
 choco install -y phantomjs
 choco install -y google-chrome-x64
-choco install -y rubymine
 
 REM .NET Framework 4.0 is a prerequisite for chocolatey,
 REM so is unneeded as a separate install.
@@ -57,9 +56,10 @@ move IEDriverServer.exe C:\drivers
 
 setx path "%path%;C:\drivers"
 
-curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe"
 mkdir devkit
-7za e -o{C:\tools\devkit} -y DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe
+cd devkit
+curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe"
+7za e -y DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe
 
 mkdir C:\git
 cd C:\git
@@ -82,5 +82,3 @@ echo - C:\rubies\217
 echo - C:\rubies\223
 
 echo ruby dk.rb install
-
-pause > nul
