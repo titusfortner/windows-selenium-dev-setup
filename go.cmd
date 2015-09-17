@@ -27,6 +27,7 @@ choco install -y dotnet3.5
 choco install -y firefox
 choco install -y phantomjs
 choco install -y google-chrome-x64
+choco install -y rubymine
 
 REM .NET Framework 4.0 is a prerequisite for chocolatey,
 REM so is unneeded as a separate install.
@@ -56,14 +57,30 @@ move IEDriverServer.exe C:\drivers
 
 setx path "%path%;C:\drivers"
 
+curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe"
+mkdir devkit
+7za e -o{C:\tools\devkit} -y DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe
+
 mkdir C:\git
 cd C:\git
-git clone https://github.com/SeleniumHQ/selenium.git
-cd selenium
-git checkout 1431a264d6101f91ff1c2ad62b1e6d5e30764b46
 
 echo You have to run the following manually:
-echo "C:\tools\uru admin add --recurse C:\rubies"
-echo "C:\tools\uru 223
+
+echo git clone https://github.com/SeleniumHQ/selenium.git
+echo cd selenium
+echo git checkout 1431a264d6101f91ff1c2ad62b1e6d5e30764b46
+
+echo C:\tools\uru admin add --recurse C:\rubies
+echo C:\tools\uru 223
+
+echo cd C:\tools\devkit
+echo ruby dk.rb init
+
+echo Add this to C:\tools\devkit\config.yml:
+echo - C:\rubies\200
+echo - C:\rubies\217
+echo - C:\rubies\223
+
+echo ruby dk.rb install
 
 pause > nul
