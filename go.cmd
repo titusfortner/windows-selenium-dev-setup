@@ -56,11 +56,6 @@ move IEDriverServer.exe C:\drivers
 
 setx path "%path%;C:\drivers"
 
-mkdir devkit
-cd devkit
-curl -L -O "http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe"
-7za e -y DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe
-
 mkdir C:\git
 cd C:\git
 
