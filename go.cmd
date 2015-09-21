@@ -67,13 +67,3 @@ echo git checkout 1431a264d6101f91ff1c2ad62b1e6d5e30764b46
 
 echo C:\tools\uru admin add --recurse C:\rubies
 echo C:\tools\uru 223
-
-echo cd C:\tools\devkit
-echo ruby dk.rb init
-
-echo Add this to C:\tools\devkit\config.yml:
-echo - C:\rubies\200
-echo - C:\rubies\217
-echo - C:\rubies\223
-
-echo ruby dk.rb install
