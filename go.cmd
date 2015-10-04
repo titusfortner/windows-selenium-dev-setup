@@ -34,7 +34,7 @@ REM choco install -y dotnet4.0
 
 if [%1]==[addvs] choco install -y visualstudio2015community -packageParameters "--Features MDDCPlusPlus"
 
-curl -L -O "http://download.microsoft.com/download/8/D/0/8D0D08CF-790D-4586-B726-C6469A9ED49C/MicrosoftWebDriver.msi"
+curl -L -O "http://download.microsoft.com/download/1/4/1/14156DA0-D40F-460A-B14D-1B264CA081A5/MicrosoftWebDriver.msi"
 msiexec /a MicrosoftWebDriver.msi /qb TARGETDIR=C:\drivers
 move "C:\drivers\Microsoft Web Driver\MicrosoftWebDriver.exe" C:\drivers
 del C:\drivers\MicrosoftWebDriver.msi
@@ -46,7 +46,7 @@ curl -L -O "http://chromedriver.storage.googleapis.com/%CHROMEDRIVER_VERSION%/ch
 7za e chromedriver_win32.zip
 move chromedriver.exe C:\drivers
 
-curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/0.3.0/wires-0.3.0-windows.zip"
+curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/v0.4.2/wires-0.4.2-win.zip"
 7za e wires-0.3.0-windows.zip
 move wires.exe C:\drivers
 
