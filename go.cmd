@@ -46,12 +46,12 @@ curl -L -O "http://chromedriver.storage.googleapis.com/%CHROMEDRIVER_VERSION%/ch
 7za e chromedriver_win32.zip
 move chromedriver.exe C:\drivers
 
-curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/v0.4.2/wires-0.4.2-win.zip"
-7za e wires-0.3.0-windows.zip
+curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/v0.5.0/wires-v0.5.0-win.zip"
+7za e wires-v0.5.0-win.zip
 move wires.exe C:\drivers
 
-curl -L -O "http://selenium-release.storage.googleapis.com/2.47/IEDriverServer_x64_2.47.0.zip"
-7za e IEDriverServer_x64_2.47.0.zip
+curl -L -O "http://selenium-release.storage.googleapis.com/2.48/IEDriverServer_Win32_2.48.0.zip"
+7za e IEDriverServer_Win32_2.48.0.zip
 move IEDriverServer.exe C:\drivers
 
 setx path "%path%;C:\drivers"
@@ -61,9 +61,8 @@ cd C:\git
 
 echo You have to run the following manually:
 
-echo git clone https://github.com/SeleniumHQ/selenium.git
-echo cd selenium
-echo git checkout 1431a264d6101f91ff1c2ad62b1e6d5e30764b46
-
 echo C:\tools\uru admin add --recurse C:\rubies
 echo C:\tools\uru 223
+
+echo git clone https://github.com/SeleniumHQ/selenium.git
+echo cd selenium
