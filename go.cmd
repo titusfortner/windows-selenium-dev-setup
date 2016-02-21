@@ -25,20 +25,10 @@ rubyinstaller-2.0.0-p647-x64.exe /silent /dir="C:\rubies\200"
 choco install -y jdk7
 choco install -y dotnet3.5
 choco install -y firefox
-choco install -y phantomjs
 choco install -y google-chrome-x64
 
-REM .NET Framework 4.0 is a prerequisite for chocolatey,
-REM so is unneeded as a separate install.
-REM choco install -y dotnet4.0
-
-if [%1]==[addvs] choco install -y visualstudio2015community -packageParameters "--Features MDDCPlusPlus"
-
-curl -L -O "http://download.microsoft.com/download/1/4/1/14156DA0-D40F-460A-B14D-1B264CA081A5/MicrosoftWebDriver.msi"
-msiexec /a MicrosoftWebDriver.msi /qb TARGETDIR=C:\drivers
-move "C:\drivers\Microsoft Web Driver\MicrosoftWebDriver.exe" C:\drivers
-del C:\drivers\MicrosoftWebDriver.msi
-rmdir "C:\drivers\Microsoft Web Driver"
+curl -L -O --insecure "https://download.microsoft.com/download/1/4/1/14156DA0-D40F-460A-B14D-1B264CA081A5/MicrosoftWebDriver.exe"
+move MicrosoftWebDriver.exe C:\drivers
 
 curl -s http://chromedriver.storage.googleapis.com/LATEST_RELEASE > temp.txt
 set /p CHROMEDRIVER_VERSION=<temp.txt
@@ -46,15 +36,47 @@ curl -L -O "http://chromedriver.storage.googleapis.com/%CHROMEDRIVER_VERSION%/ch
 7za e chromedriver_win32.zip
 move chromedriver.exe C:\drivers
 
-curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/v0.5.0/wires-v0.5.0-win.zip"
-7za e wires-v0.5.0-win.zip
+curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/v0.6.2/wires-0.6.2-win.zip"
+7za e wires-0.6.2-win.zip
 move wires.exe C:\drivers
 
-curl -L -O "http://selenium-release.storage.googleapis.com/2.48/IEDriverServer_Win32_2.48.0.zip"
-7za e IEDriverServer_Win32_2.48.0.zip
+curl -L -O "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip"
+7za e phantomjs-2.1.1-windows.zip
+move  phantomjs-2.1.1-windows/bin/phantomjs.exe C:\drivers
+
+curl -L -O "http://selenium-release.storage.googleapis.com/2.52/IEDriverServer_x64_2.52.0.zip"
+7za e IEDriverServer_x64_2.52.0.zip
+rename IEDriverServer.exe IEDriverServer64.exe
+move IEDriverServer64.exe C:\drivers
+
+curl -L -O "http://selenium-release.storage.googleapis.com/2.52/IEDriverServer_Win32_2.52.0.zip"
+7za e IEDriverServer_Win32_2.52.0.zip
 move IEDriverServer.exe C:\drivers
 
 setx path "%path%;C:\drivers"
+
+mkdir c:\firefoxes
+mkdir c:\firefox\esr
+mkdir c:\firefox\developer
+mkdir c:\firefox\beta
+mkdir c:\firefox\nightly
+setx path "%path%;c:\firefoxes\esr;c:\firefoxes\developer;c:\firefoxes\beta;c:\firefoxes\nightly"
+
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableESR_38.6.1_English.paf.exe"
+rename FirefoxPortableESR_38.6.1_English.paf.exe firefox.exe
+move firefox.exe c:\firefox\esr\
+
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableTest_45.0_Beta_1_English.paf.exe"
+rename FirefoxPortableTest_45.0_Beta_1_English.paf.exe firefox.exe
+move firefox.exe c:\firefox\beta\
+
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableDeveloper_46.0_Alpha_2_English_online.paf.exe"
+rename FirefoxPortableDeveloper_46.0_Alpha_2_English_online.paf.exe firefox.exe
+move firefox.exe c:\firefox\developer\
+
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableNightly64_47.0_Alpha_1_Pre_English_online.paf.exe"
+rename FirefoxPortableNightly64_47.0_Alpha_1_Pre_English_online.paf.exe firefox.exe
+move firefox.exe c:\firefox\nightly\
 
 mkdir C:\git
 cd C:\git
