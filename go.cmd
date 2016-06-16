@@ -36,7 +36,7 @@ curl -L -O "http://chromedriver.storage.googleapis.com/%CHROMEDRIVER_VERSION%/ch
 7za e chromedriver_win32.zip
 move chromedriver.exe C:\drivers
 
-curl -L -O --insecure "https://github.com/jgraham/wires/releases/download/v0.6.2/wires-0.6.2-win.zip"
+curl -L -O --insecure "https://github.com/mozilla/geckodriver/releases/download/v0.8.0/geckodriver-v0.8.0-win32.zip"
 7za e wires-0.6.2-win.zip
 move wires.exe C:\drivers
 
@@ -44,39 +44,35 @@ curl -L -O "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-wind
 7za e phantomjs-2.1.1-windows.zip
 move  phantomjs-2.1.1-windows/bin/phantomjs.exe C:\drivers
 
-curl -L -O "http://selenium-release.storage.googleapis.com/2.52/IEDriverServer_x64_2.52.0.zip"
-7za e IEDriverServer_x64_2.52.0.zip
-rename IEDriverServer.exe IEDriverServer64.exe
-move IEDriverServer64.exe C:\drivers
-
-curl -L -O "http://selenium-release.storage.googleapis.com/2.52/IEDriverServer_Win32_2.52.0.zip"
-7za e IEDriverServer_Win32_2.52.0.zip
+curl -L -O "http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.1.zip"
+7za e IEDriverServer_Win32_2.53.1.zip
 move IEDriverServer.exe C:\drivers
 
 setx path "%path%;C:\drivers"
 
 mkdir c:\firefoxes
-mkdir c:\firefox\esr
-mkdir c:\firefox\developer
-mkdir c:\firefox\beta
-mkdir c:\firefox\nightly
+mkdir c:\firefoxes\esr
+mkdir c:\firefoxes\developer
+mkdir c:\firefoxes\beta
+mkdir c:\firefoxes\nightly
+
 setx path "%path%;c:\firefoxes\esr;c:\firefoxes\developer;c:\firefoxes\beta;c:\firefoxes\nightly"
 
-curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableESR_38.6.1_English.paf.exe"
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableESR_45.2.0_English.paf.exe"
 rename FirefoxPortableESR_38.6.1_English.paf.exe firefox.exe
-move firefox.exe c:\firefox\esr\
+move firefox.exe c:\firefoxes\esr\
 
-curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableTest_45.0_Beta_1_English.paf.exe"
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableTest_47.0_Beta_1_English.paf.exe"
 rename FirefoxPortableTest_45.0_Beta_1_English.paf.exe firefox.exe
-move firefox.exe c:\firefox\beta\
+move firefox.exe c:\firefoxes\beta\
 
-curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableDeveloper_46.0_Alpha_2_English_online.paf.exe"
-rename FirefoxPortableDeveloper_46.0_Alpha_2_English_online.paf.exe firefox.exe
-move firefox.exe c:\firefox\developer\
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableDeveloper_48.0_Alpha_2_English_online.paf.exe"
+rename FirefoxPortableDeveloper_48.0_Alpha_2_English_online.paf.exe firefox.exe
+move firefox.exe c:\firefoxes\developer\
 
-curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableNightly64_47.0_Alpha_1_Pre_English_online.paf.exe"
-rename FirefoxPortableNightly64_47.0_Alpha_1_Pre_English_online.paf.exe firefox.exe
-move firefox.exe c:\firefox\nightly\
+curl -L -O "http://downloads.sourceforge.net/portableapps/FirefoxPortableNightly_49.0_Alpha_1_Pre_English_online.paf.exe"
+rename FirefoxPortableNightly_49.0_Alpha_1_Pre_English_online.paf.exe firefox.exe
+move firefox.exe c:\firefoxes\nightly\
 
 mkdir C:\git
 cd C:\git
@@ -87,4 +83,8 @@ echo C:\tools\uru admin add --recurse C:\rubies
 echo C:\tools\uru 223
 
 echo git clone https://github.com/SeleniumHQ/selenium.git
-echo cd selenium
+echo git clone https://github.com/shs96c/buck
+echo cd buck
+echo ant
+echo cd ../selenium
+echo ./go test_rb
